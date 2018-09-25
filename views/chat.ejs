@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat SCB</title>
+	    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+        <script src="/js/funcoes.js" type="text/javascript"></script>
+</head>
+<body>
+    <ul id="messages"></ul>
+    <form action="">
+        <input type="text" id="m" autocomplete="off"/>
+        <button>
+            Send
+        </button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            var socket = io();
+            $('form').submit(function(){
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;                
+            });
+            
+            socket.on('chat message', function(msg){
+                    $('#messages').append($('<li>').text(msg));
+                });
+        });   
+    </script>
+            <!-- /#container do chat 
+        <div class="popup-box chat-popup" id="qnimate">
+            <div class="popup-head" >                
+                <div style="width: 100%; background-color: #b0b0b0;; height: 30px; white-space: nowrap;">
+                    <span style="left: 0; max-width: 270px;">
+                        <p id="nm_us_chat"></p>
+                    </span>
+                    <span  data-widget="remove" id="removeClass" class="chat-header-button pull-right" style="cursor: pointer;">                    
+                        X
+                    </span>
+                </div>
+
+            </div>
+            <div style="height: auto; width: 100%; min-height: 345px; overflow: scroll; max-height: 345px; overflow-x: hidden;">
+                <ul id="messages">
+
+                </ul>
+            </div>
+            <div id="sendMsg" style="vertical-align: bottom; width: 100%;">
+                <form action="" id="form_msg">
+                <input type="text" id="m" size="30"><input id="btn_enviar" type="button" value=">" name="send" onclick="" style="padding-top: 2px; padding-bottom: 2px; background-color: #0073fd; border: none;"/>
+                </form>
+            </div>
+        </div>-->
+</body>
+</html>

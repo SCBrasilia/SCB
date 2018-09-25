@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/funcoes.js"></script>   
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom styles for this template -->
+        <link href="css/simple-sidebar.css" rel="stylesheet">
+        <style>
+            #menuu ul {
+                padding:0px;
+                margin:0px;
+                list-style:none;
+                color: #fff;
+            }
+            #menuu ul li{
+                display: inline;
+            }
+            #menuu ul li p{
+                display: inline-block;
+            }
+            .temp{
+                min-height: 750px;
+            }
+            .azul{
+                background-color: blue;
+
+            }
+            .verde{
+                background-color: green;
+            }
+            .vermelho{
+                background-color: red;
+            }
+            .foto_pesquisa{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            .div_chat{
+                width: 200px;
+                height: 250px;
+                background-color: #f00;
+                position: relative;
+                z-index: 100000;
+                top: 100%;
+                right: 10;
+            }
+             input {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 15px;
+                background-color: #FFFFFF;
+                border: 1px solid #000000;
+            }
+
+            .popup-box-chat {
+                background-color: #ffffff;
+                border: 1px solid #b0b0b0;
+                bottom: 0;
+                display: none;
+                height: 415px;
+                position: fixed;
+                right: 3%;
+                width: 300px;
+                font-family: 'Open Sans', sans-serif;
+                z-index: 999999999;
+            }
+
+            .popup-box-chat-on {
+                display: block !important;
+            }
+            #sendMsg{
+                max-width: 298px;
+                bottom: 0px;
+            }
+            .input_message{
+                width: 280px;
+            }
+            #btn_enviar{
+                
+            }
+            .img_amg_chat{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+            }
+            .btn_enviar{
+                width: 18px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                background-color: #0073fd;
+                border: none;
+            }
+             @media only screen and (max-width : 320px) 
+            {
+                .chat-sidebar
+                {
+                    display: none !important;
+                }
+
+                .chat-popup
+                {
+                    display: none !important;
+                }
+            }
+            body
+            {
+                background-color: #E9EBEE;
+            }
+
+            .chat-sidebar
+            {
+
+                width: 200px;
+                position: fixed;
+                height: 100%;
+                right: 0px;
+                top: 0px;
+                padding-top: 50px;
+                padding-bottom: 10px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+
+            .sidebar-name 
+            {
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-bottom: 4px;
+                font-size: 12px;
+            }
+
+            .sidebar-name span
+            {
+                padding-left: 5px;
+            }
+
+            .sidebar-name a
+            {
+                display: block;
+                height: 100%;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .sidebar-name:hover
+            {
+                background-color:#e1e2e5;
+            }
+
+            .sidebar-name img
+            {
+                width: 32px;
+                height: 32px;
+                vertical-align:middle;
+            }
+
+            .popup-box-chat
+            {
+                display: none;
+                position: fixed;
+                bottom: 0px;
+                right: 220px;
+                height: 285px;
+                background-color: rgb(237, 239, 244);
+                width: 300px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+
+            .popup-box-chat .popup-head
+            {
+                background-color: #6d84b4;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                clear: both;
+            }
+
+            .popup-box-chat .popup-head .popup-head-left
+            {
+                float: left;
+            }
+
+            .popup-box-chat .popup-head .popup-head-right
+            {
+                float: right;
+                opacity: 0.5;
+            }
+
+            .popup-box-chat .popup-head .popup-head-right a
+            {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .popup-box-chat .popup-messages
+            {
+                height: 220px;
+                overflow-y: auto;
+            }
+            .chat_footer{
+                width: 100%;
+                bottom: 0px;
+                position: absolute;
+            }
+            .messages{
+                height: auto;
+                min-height: 220px;
+                max-height: 220px;
+                overflow-y: auto;
+            }
+            .MYMESSAGE{
+                width: 100%;
+                text-align: right;
+                margin-top: 8px;
+            }
+            .MYMESSAGE span{
+                margin-right: 5px;
+                color: #FFF;
+                padding: 4px;                
+                border-radius: 10px;
+                background-color: #800080;
+            }
+            .MYMESSAGE_small{
+                margin-top: 4px;
+                font-size: 9px;
+                float: right;
+            }
+            .RCMESSAGE_small{
+                margin-top: 4px;
+                font-size: 9px;
+                float: left;
+            }
+            .RCMESSAGE span{
+                background-color: #CCC;
+                border-radius: 10px;
+                padding: 4px;
+                padding-left: 5px;
+            }
+            .container_principal{
+                margin-left: 100px;
+            }
+            @media(max-width: 1500px){
+                .container_principal{
+                    margin-left: 0;
+                }
+                 #menu-toggle_right {
+                    display: block;
+                  }
+                  .popup-box-chat{
+                    right: 0;
+                  }
+                   #menu-close_right {
+                    display: block;
+                  }
+
+                  #sidebar-wrapper_right {
+                    right: -250px;
+                    width: 250px;
+                    background: #FFF;
+                    position: fixed;
+                    height: 100%;
+                    overflow-y: auto;
+                    z-index: 1000;
+                    transition: all 0.5s ease-in 0s;
+                    -webkit-transition: all 0.5s ease-in 0s;
+                    -moz-transition: all 0.5s ease-in 0s;
+                    -ms-transition: all 0.5s ease-in 0s;
+                    -o-transition: all 0.5s ease-in 0s;
+                  } 
+            }
+            @media(min-width: 1500px){
+                #sidebar-wrapper_right{
+                    right: 0;
+                  }
+                  #sidebar-wrapper_right.active{
+                    right: 0;
+                  }
+            }
+            #principal{
+                padding: 0px;
+            }
+        </style>
+        <script type="text/javascript">
+            function myProfile(){
+                $("#time_line").load('/myProfile');
+            }
+            $(function (){
+                $("#menu-close_right").click(function(e) {
+                e.preventDefault();
+                $("#sidebar-wrapper_right").removeClass("active_2");
+                $("#sidebar-wrapper_right").toggleClass("active");
+            });
+            $("#menu-toggle_right").click(function(e) {
+                e.preventDefault();
+                $("#sidebar-wrapper_right").toggleClass("active_2");
+            });
+            })
+            
+            var rc = 0;
+            var me;
+            <%if(usuario.id_us && usuario.nome_us){%>
+             me = {id_me: <%=usuario.id_us%>, nome: '<%=usuario.nome_us%>'};
+            <%}%>
+
+            function search_user(){
+                $("#time_line").load("/search_users", {
+                    nome: $("#search_user").val()
+                });
+            }
+            // script do chat
+            //this function can remove a array element.
+            Array.remove = function (array, from, to) {
+                var rest = array.slice((to || from) + 1 || array.length);
+                array.length = from < 0 ? array.length + from : from;
+                return array.push.apply(array, rest);
+            };
+
+            //this variable represents the total number of popups can be displayed according to the viewport width
+            var total_popups = 0;
+
+            //arrays of popups ids
+            var popups = [];
+
+            //this is used to close a popup
+            function close_popup(id){
+                for (var iii = 0; iii < popups.length; iii++){
+                    if (id == popups[iii]){
+                        Array.remove(popups, iii);
+
+                        document.getElementById(id).style.display = "none";
+
+                        calculate_popups();
+
+                        return;
+                    }
+                }
+            }
+
+            function setChat(id){
+                rc = id;
+            }
+
+            //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+            function display_popups(){
+                var right = 0;
+
+                var iii = 0;
+                for (iii; iii < total_popups; iii++){
+                    if (popups[iii] != undefined){
+                        var element = document.getElementById(popups[iii]);
+                        element.style.right = right + "px";
+                        right = right + 320;
+                        element.style.display = "block";
+                    }
+                }
+
+                for (var jjj = iii; jjj < popups.length; jjj++){
+                    var element = document.getElementById(popups[jjj]);
+                    element.style.display = "none";
+                }
+            }
+
+            function rolarChat(){
+                var div = $(".popup-messages"); 
+                div.prop("scrollTop", div.prop("scrollHeight"));
+            }
+            //
+            function carregarMsg(id){
+                $("#messages"+id).load('/getMessages', {
+                    id_me: me.id_me,
+                    id_rc: id
+                }, function (resposeText){
+                    if(resposeText){
+                        rolarChat();
+                    }
+                });
+            }
+            //creates markup for a new popup. Adds the id to popups array.
+            function register_popup(id, name){
+                
+                for (var iii = 0; iii < popups.length; iii++){
+                    //already registered. Bring it to front.
+                    if (id == popups[iii]){
+                        Array.remove(popups, iii);
+                        popups.unshift(id);
+                        calculate_popups();
+                        return;
+                    }
+                }
+
+                var element = '<div onclick="setChat('+id+')"><div class="popup-box-chat chat-popup" id="'+id+'">';
+                element = element + '<div class="popup-head">';
+                element = element + '<div class="popup-head-left">' + name + '</div>';
+                element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\'' + id + '\');">&#10005;</a></div>';
+                element = element + '<div style="clear: both"></div></div><div class="popup-messages"><di id="messages'+id+'"  class="messages"></di><div class="chat_footer">\n\
+                <form id="form_msg'+id+'"><input type="text" id="m'+id+'" autocomplete="off"><button type="submit">Send</button></form></div></div></div></div>';
+
+                document.getElementById("chats").innerHTML = document.getElementById("chats").innerHTML + element;
+                carregarMsg(id);
+                popups.unshift(id);
+
+                calculate_popups();
+
+            }
+
+            //calculate the total number of popups suitable and then populate the toatal_popups variable.
+            function calculate_popups(){
+                var width = window.innerWidth;
+                if (width < 320){
+                    total_popups = 0;
+                } else{
+                    width = width;
+                    //320 is width of a single popup box
+                    total_popups = parseInt(width / 320);
+                }
+
+                display_popups();
+
+            }
+
+            //recalculate when window is loaded and also when window is resized.
+            window.addEventListener("resize", calculate_popups);
+            window.addEventListener("load", calculate_popups);
+        </script>
+    </head>
+
+    <body style="padding: 0px; margin: 0px;">
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            <img src="images/logo.png" style="width: 50px; padding: 0px;">
+                            <span style="padding-top: 5px;">rasília</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Amigos <img src="images/hostel-amigos-berlim.png" style="width: 30px;"></a>
+                    </li>
+                    <li>
+                        <a href="#">Shortcuts</a>
+                    </li>
+                    <li>
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper" style="padding: 0px; position: fixed; top: 0px; z-index: 1;">
+                <div class="container-fluid" style=" background-color: #800080; max-height: 50px; " id="menuu">
+                    <ul style="">
+                        <li>
+                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle" style="padding: 0px; background-color: transparent; border: 0px;"><img src="images/menu.png" width="45px;"></a>  
+                        </li>
+                        <li>
+                            <a href="javascript:myProfile();" class="btn btn-secondary" id="menu-toggle" style="padding: 0px; background-color: transparent; border: 0px;">
+                                <%if(usuario.foto_us){%>
+                                <img src=images/<%=usuario.foto_us%> width="45px;">
+                                <%}else{%>
+                                <img src="images/user.png" width="45px;">
+                                <%}%>
+                            </a>  
+                        </li>
+                        <li>
+                        <%if(usuario.nome_us){%>                        
+                            <p><%=usuario.nome_us%></p>
+                        <%}%>
+                        </li>
+                        <li>
+                            <p>|</p>
+                        </li>
+                        <li>
+                            <img src="images/Friends.png" style="width: 40px;">  
+                        </li>
+                        <li style="color: black;">
+                            <input type="text" id="search_user"/><button onclick="search_user()">Search</button>
+                        </li>
+                        <li>
+                            
+                        </li>
+                    </ul>                     
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <a id="menu-toggle_right" href="#" class="btn btn-primary btn-lg toggle"><i class="glyphicon glyphicon-bookmark"></i></a>
+        <div id="sidebar-wrapper_right">
+                <a id="menu-close_right" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="glyphicon glyphicon-remove"></i></a>
+                        <%
+                            if(friendsArray){
+                            friendsArray.map((a)=>{
+                        %>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup(<%=a.id_amg%>, '<%=a.nm_amg%>');">
+                                    <img width="30" height="30" src="images/<%=a.img_amg%>" class='img_amg_chat'/>
+                                    <span><%=a.nm_amg%></span>
+                                </a>
+                            </div>
+                        <%
+                            });
+                            }
+                        %>         
+            </div>
+        <div class="container-fluid">            
+        <div class="container container_principal" id="principal" style="height: 750px; z-index: -1; margin-top: 50px; border: 1px solid #DDDFE2;">
+                <div class="col-lg-12 temp verde" id="time_line">
+                    <form action="/post_in_time_line" id="upload_perfil" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                        <label for="msg_post">Digite sua mensagem
+                            <input id="msg_post" class="form-control" name="msg_post" type="text">
+                        </label>
+                        </div>
+                        <div class="form-row">
+                        <label for="form_foto_perfil">Foto
+                            <input type="file" name="foto_perfil" class="form-control" id="form_foto_perfil" accept="image/png, image/jpeg">
+                            </label>
+                            </div>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary">enviar</button>
+                        </div>
+                    </form>
+                </div>                               
+        </div>
+
+        </div>        
+        <div id="chats">
+            
+        </div>
+
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+            $(function(){
+                var socket = io();
+                var data;
+                $("#chats").submit('#form_msg'+rc, function(){
+                    data = {nome: me.nome, de: me.id_me, to: rc, msg: $('#m'+rc).val()}
+                    socket.emit('chat_message', data);
+                    $('#m'+rc).val('');
+                    return false;                
+                });
+
+                socket.on('chat_message', function(data){
+                    var div = $(".popup-messages");   
+                    if(me.id_me == data.de){                         
+                        $('#messages'+rc).append('<div class="MYMESSAGE"> <span>'+data.msg+'</span></div>');
+                        div.prop("scrollTop", div.prop("scrollHeight"));
+                    }else{
+                        if(me.id_me == data.to){
+                           register_popup(data.de, data.nome);
+                           $('#messages'+data.de).append('<div class="RCMESSAGE"><span>'+data.msg+'</span></div>'); 
+                           div.prop("scrollTop", div.prop("scrollHeight"));
+                        }
+                    }
+                });
+            });   
+            </script>
+        <!-- /#wrapper -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!--Modais-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--MODAL UPLOAD-->
+                <div class="modal fade" id="UPLOAD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="titulo">Atualizar foto de perfil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body_upload">
+                        <form action="/file" id="upload_perfil" method="post" enctype="multipart/form-data">
+                            <input type="file" name="foto_perfil" id="form_foto_perfil" accept="image/png, image/jpeg">
+                        </form>
+                        <br>
+                        <div id="aviso_tamanho">
+                            
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="enviarFoto()">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,8 @@
+<%if(messages){
+	messages.map((a)=>{
+%>
+<div class="<%=a.class%>"><span><%=a.msg%></span><br></div>
+<%
+});%>
+<small class="<%=messages[messages.length -1].class%>_small"><%=messages[messages.length -1].dt_msg%></small><br>
+<%}%>

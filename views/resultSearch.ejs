@@ -1,0 +1,19 @@
+<%if(message){%>
+<%=message%>
+<%}%>
+
+<%if(usuarios_found){
+	usuarios_found.map((a)=>{
+%>
+	<li>
+		<div class="row">
+			<img src="images/<%=a.foto_us_fd%>" class='foto_pesquisa'>
+			<p><%=a.nome_us_fd%></p><br>
+			<p><%=a.end_us_fd%></p>
+		</div>
+		
+	</li>
+<%
+	});
+}
+%>

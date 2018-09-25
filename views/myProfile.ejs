@@ -1,0 +1,162 @@
+
+        <style>
+            body{
+                    font-family: inherit;
+            }
+            .capa{
+                height: 230px;
+                min-width: 70px;
+                background-color: #868e96;
+            }
+            .photo_profile{
+                position: absolute;
+                bottom: 0;
+                height: 150px;
+            }
+            .name_profile{
+                position: absolute;
+                bottom: 0;  
+            }
+            .photo_perf_time_line{
+                width: 30px;
+                border-radius: 40%;
+            }
+            .name_header{
+                font-weight: bold;
+                color: #800080;
+            }
+            .comentarios{
+                float: right;
+            }
+            .photo_posted{
+                width: 100%;
+                max-height: 600px;
+            }
+            .photo_perf_time_line_coment{
+                width: 30px;
+                border-radius: 40%;
+            }
+            .like_resp{
+                color: #0099cc;
+                cursor: pointer;
+            }
+            .borda{
+                background-color: #FFF;
+                border: 1px solid #DDDFE2;
+                  padding-bottom: 5px;
+                  margin-bottom: 5px;
+            }
+            .text_post{
+                padding-bottom: 10px;
+                padding-top: 5px;
+            }
+            .nome_perfil{                
+                position: absolute;
+                color: #FFF;
+                font-weight: bold;
+                bottom: 0px;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: black;
+            }
+            .foto_perfil_1{
+                max-height: 168px;
+                max-width: 168px;
+                min-width: 168px;
+                min-height: 168px;
+                height: 168px;
+                width: 168px;
+                border: 3px solid #F16D16;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        </style>                    
+        <%if(usuario){%>
+        <main>
+            <div class="row">
+                <div class="container" style="height: auto;">
+                    <div class="col-lg-12 capa borda" style="background-image: url(img/8f2e9291-bca6-43f0-a0bd-6c4788ba7c84.jpg); background-size: cover;">
+                        <div class="col-lg-5 photo_profile" style="bottom: 0px;">
+                            <div class="row" style="bottom: 0; position: absolute;">
+                                <div class="col-lg-5" style="min-height: 170px;">
+                                    <div class="col-lg-3 foto_perfil_1" style="background-image: url('images/<%=usuario.foto_perfil%>');" >
+                                    <div style="min-height: 148px; min-width: 100%; height: 148px; width: 100%; z-index: 999" data-toggle="modal" data-target="#exampleModal"></div>
+                                    <span class="glyphicon glyphicon-camera" style="position: absolute; z-index: 999; bottom: 0px; height: 20px;" data-toggle="modal" data-target="#UPLOAD">FOTO</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7" style="position: absolute; left: 170px; bottom: 0px;">
+                                    <h3 class="nome_perfil"><%=usuario.nome%></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="col-lg-12 borda">
+                                <h5>Descrição:</h5>
+                                asdasdasdasdasdasdasd
+                                asdasdasdasdasdasdasdas
+                                asdadadadadadadasd
+                                asdasdasdasdasdasda
+                                adadadasdadfsfggfgsafad
+                                asdasdgsdgsgdfasdasdas 
+                                
+                            </div>
+                            <div class="col-lg-12 borda">
+                                <h5>Fotos</h5>
+                                <div class="row">
+                                    <div class="col-lg-6" style="background-color: #FFF; height: 100px;">
+
+                                    </div>
+                                    <div class="col-lg-6" style="background-color: #FFF; height: 100px;">
+
+                                    </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6" style="background-color: #FFF; height: 100px;">
+
+                                    </div>
+                                    <div class="col-lg-6" style="background-color: #FFF; height: 100px;">
+
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div id="time_line" class="col-lg-8">
+                            <center>
+                                <div class="post_time_line col-12 borda" style="background-color: #FFF; text-align: justify;">
+                                    <div class="header_post"><img src="images/teste.jpg" alt="" class="photo_perf_time_line"/>&nbsp;<span class="name_header">Marcos Henrique</span></div>
+                                    <div class="body_post">
+                                        <div class="text_post">
+                                            Esse e um post de teste please ignorar esta porra pois e so pra motivos de teste caralho
+                                        </div>
+                                        <div class="photo_post">
+                                            <img src="images/32561150_994739447333406_7497715964721496064_n.jpg" alt="" class="photo_posted"/>
+                                        </div>
+                                    </div>
+                                    <div class="footer_post">
+                                        <hr>
+                                        <div class="infos_post"><span class="curtidas">12 curtidas</span><span class="comentarios">45 comentarios</span></div>
+                                        <hr>
+                                        <div class="row" style="text-align: center; padding-bottom: 5px;"><button type="button" class="btn btn-primary" style="width: 49%;">Curti</button>&nbsp;<button  style="width: 49%;" type="button" class="btn btn-primary">Comentar</button></div>
+                                        <hr>
+                                    </div>
+                                    <div class="comentarios_post">
+                                        <div class="comentarios_peplo">
+                                            <div class="header_post"><img src="images/teste.jpg" alt="" class="photo_perf_time_line_coment"/>&nbsp;<span class="name_header_coment">Marcos Henrique</span></div>
+                                            <div class="comentario_body">
+                                                kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkk
+                                            </div>
+                                            <div class="comentario_footer">
+                                                <span class="like_resp">Curti</span>&nbsp;<span  class="like_resp">Responder</span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%}%>

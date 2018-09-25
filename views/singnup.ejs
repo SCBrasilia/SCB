@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../../../favicon.ico">
+        <script src="/js/funcoes.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui.js" type="text/javascript"></script>
+        <title>Cadastre-se</title>
+        <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style>
+            #container_cadastrar{
+                float: right;
+                text-align: center;
+                padding-right: 1%;
+                color: #FFF;
+            }
+            body{
+                background-image: url('/images/cadastro_background.jpg');
+                background-size: cover;
+            }
+            .aviso{
+                color: red;
+                font-size: 11px;
+            }
+        </style>
+    </head>
+
+    <body class="">
+        <div class="container-fluid">
+            <div class="row" id="container_cadastrar">
+                    <form class="form-signin" action="/users/singnup" method="POST" id="form_cadastro" style="margin-top: 5%;">
+                        <div id="container_logo">
+                           <img class="mb-4" src="/images/logo.png" alt="" width="100"> 
+                        </div>                        
+                        <h1 class="h3 mb-3 font-weight-normal">Por favor preencha todos os campos!</h1>
+                        <center>Nome</center>
+                        <input type="text" name="inputNome" class="form-control" placeholder="Nome" required autofocus>
+                        <span id="aviso_nome" class="aviso"></span>
+                        <center>Sexo</center>
+                        <select name="inputSexo" class="form-control">
+                            <option value="-1" selected>Selecione</option>
+                            <option value="H">Homem</option>
+                            <option value="M">Mulher</option>
+                            <option value="O">Outros</option>
+                        </select>
+                        <span id="aviso_sexo" class="aviso"></span>
+                        <center>e-mail</center>
+                        <input type="email" name="inputEmail" class="form-control" placeholder="e-mail" required>
+                        <span id="aviso_email" class="aviso"></span>
+                        <center>Senha</center>
+                        <input type="password" name="inputPassword" class="form-control" placeholder="Senha" maxlength="10" required>
+                        <span id="aviso_senha" class="aviso"></span>
+                        <center>Comfirme a senha</center>
+                        <input type="password" name="inputCPassword" class="form-control" placeholder="Senha" maxlength="10" required>
+                        <span id="aviso_Csenha" class="aviso"></span>
+                        <center>Cidade</center>
+                        <select name="inputCidade" class="form-control">
+                            <option>Brasília</option>
+                            <option>Ceilândia</option>
+                            <option>Gama</option>
+                            <option>Planaltina</option>
+                            <option>Taguatinga</option>
+                            <option>Sobradinho</option>
+                            <option>Valparaíso de Goiás</option>
+                        </select>
+                        <div>
+                            <button class="btn btn-lg btn-primary btn-block" onclick="cadastrar()" id="btn_cadastrar" type="button" style="margin-top: 20px; background-color: #800080;">Cadastrar</button>                            
+                        </div>
+                        <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+                    </form>
+                </div>
+            <div id="retorno_cadastro" style="color: #FFF">
+            <%if(message){%>
+                <p>   
+                <label style="color: red"><%=message%></label>
+                </p>
+                <%}%>
+            </div>
+        </div>
+</body>
+</html>
